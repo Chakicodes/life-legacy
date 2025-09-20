@@ -3,7 +3,12 @@
     "filesystem": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/kasparscakans/life-legacy"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
+    },
+    "git": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "${workspaceFolder}"]
     }
   }
 }

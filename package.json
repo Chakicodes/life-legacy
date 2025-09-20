@@ -2,13 +2,17 @@
   "name": "life-legacy",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20 <21"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "ci": "npm run -s lint && npm run -s typecheck && npm run -s build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
