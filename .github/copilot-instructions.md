@@ -39,6 +39,7 @@ V1 only = capture & view memories. Delivery-after-death flows come later.
   - Filename sanitization required for all uploads (ASCII `[a-z0-9._-]`, lowercase).
 
 **Developer workflow**
+
 - Commands: `npm run dev`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run ci`.
 
 # Copilot Instructions
