@@ -8,7 +8,7 @@ V1 only = capture & view memories. Delivery-after-death flows come later.
 
 - Next.js 15 (App Router), TypeScript, TailwindCSS
 - Supabase (Auth with email, Postgres + RLS, Storage private bucket `memories`)
-- File naming: sanitize ASCII lowercase [a-z0-9._-], path: user/<uid>/mem*<memoryId>/<timestamp>*<safe_name>
+- File naming: sanitize ASCII lowercase [a-z0-9._-], path: `user/<uid>/mem_<memoryId>/<timestamp>_<safe_name>`
 - Storage access: signed URLs, short TTL.
 
 **UI/UX**
@@ -40,6 +40,7 @@ V1 only = capture & view memories. Delivery-after-death flows come later.
 
 **Developer workflow**
 
+- Node 22 (see `.nvmrc`).
 - Commands: `npm run dev`, `npm run lint`, `npm run typecheck`, `npm run build`, `npm run ci`.
 
 # Copilot Instructions

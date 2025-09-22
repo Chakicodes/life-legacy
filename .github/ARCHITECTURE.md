@@ -2,9 +2,8 @@
 
 ## Data access pattern
 
-- **Reads/CRUD**: Server Components / Server Actions call repo functions in `src/repo/*`.
-- **Uploads**: client-side to Supabase Storage (private bucket) with RLS protection and short-lived signed URLs.
-- **Supabase clients**:
-  - `src/lib/supabaseClient.ts` — browser client (anon key).
-  - `src/lib/supabaseServer.ts` — server client via `@supabase/ssr` + cookies (uses anon key; RLS enforces per-user access).
-- **File naming**: `user/<uid>/mem_<memoryId>/<timestamp>_<safe_name>`; sanitize to ASCII lower `[a-z0-9._-]`.
+- **Reads/CRUD**: Prefer Server Components / Server Actions. Use the shared Supabase client where appropriate.
+- **Uploads**: Client-side to Supabase Storage (private bucket) with RLS protection and short-lived signed URLs.
+- **Supabase client**:
+  - `src/lib/supabase.ts` — initializes a Supabase JS client using `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+- **File naming**: `user/<uid>/mem_<memoryId>/<timestamp>_<safe_name>`; sanitize to ASCII lowercase `[a-z0-9._-]`.

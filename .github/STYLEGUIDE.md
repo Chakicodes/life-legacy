@@ -8,9 +8,9 @@
 ## UI Components
 
 - `<Button>` is polymorphic:
-  - Supports `<button>` and Next `<Link>` (`asChild`/polymorphic prop).
+  - Renders a real `<button>` by default; when `href` is provided, renders a Next `<Link>`.
   - Default `type="button"`.
-  - Visual/ARIA state via `isDisabled` (internally applies `disabled`, `aria-disabled`, styles).
+  - Visual/ARIA state via `isDisabled` (prevents navigation on links, applies `disabled` and `aria-disabled` semantics).
 - Keep variants minimal (e.g., `primary`, `secondary`); use `cn()` helper for conditional classes.
 
 ## TypeScript
