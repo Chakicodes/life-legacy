@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/# backups of node_modules (Windows cleanup)
+/node_modules.old*
 /.pnp
 .pnp.*
 .yarn/*
