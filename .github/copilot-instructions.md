@@ -36,6 +36,7 @@ V1 only = capture & view memories. Delivery-after-death flows come later.
 - Path aliases: `@/*` → `src/*` (use absolute imports).
 - Supabase usage:
   - Client uploads (signed, RLS-safe) live in client components.
+  - Always sanitize filenames via `src/lib/filename.ts` (`sanitizeFileName`) before uploading.
   - Filename sanitization required for all uploads (ASCII `[a-z0-9._-]`, lowercase).
 
 **Developer workflow**

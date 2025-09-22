@@ -66,3 +66,10 @@ Reload VS Code window so PATH changes apply.
 - Missing env vars during build: ensure `.env.local` is filled (see `.env.local.example`).
 - Windows EPERM on `node_modules`: stop Node processes, rename `node_modules`, and reinstall.
 - Next.js root warning: `next.config.ts` sets `turbopack.root` to project root.
+
+## Docs
+
+- Architecture: `.github/ARCHITECTURE.md`
+- Styleguide: `.github/STYLEGUIDE.md`
+- Copilot Instructions: `.github/copilot-instructions.md`
+- Supabase Setup (template): `.github/SUPABASE.md`
