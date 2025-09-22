@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) app configured for cross‑platform development (Windows + macOS).
 
-## Getting Started
+## Prerequisites
 
-First, run the development server:
+- Node: `22.x` (see `.nvmrc`)
+- Package manager: `npm` (default). `corepack` is enabled, so `pnpm` can be activated if desired.
+- Env vars: see `.env.local.example`
 
-```bash
+## Setup (Windows and macOS)
+
+1. Node 22 with fnm
+
+- Install fnm:
+  - Windows (PowerShell): `winget install -e Schniz.fnm`
+  - macOS (Homebrew): `brew install fnm`
+- Initialize fnm in your shell (PowerShell/zsh/bash) and then:
+  ```sh
+  fnm install 22
+  fnm use 22
+  ```
+  fnm will auto‑activate via `.nvmrc`.
+
+2. Env vars
+
+- Copy example and fill values:
+  ```sh
+  cp .env.local.example .env.local   # macOS/Linux
+  # Windows PowerShell
+  # Copy-Item .env.local.example .env.local -Force
+  ```
+  Provide your `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+
+3. Install and run
+
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Build and validate
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm run -s lint
+npm run -s typecheck
+npm run -s build
+```
 
-## Learn More
+## MCP servers (optional)
 
-To learn more about Next.js, take a look at the following resources:
+This workspace includes `.vscode/mcp.json` for:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Filesystem server: `@modelcontextprotocol/server-filesystem` (via `npx`)
+- Git server: `mcp-server-git` (via `uvx`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Install `uv`/`uvx` if needed:
 
-## Deploy on Vercel
+- Windows (PowerShell): `irm https://astral.sh/uv/install.ps1 | iex`
+- macOS (Homebrew): `brew install uv`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Reload VS Code window so PATH changes apply.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Troubleshooting
+
+- Missing env vars during build: ensure `.env.local` is filled (see `.env.local.example`).
+- Windows EPERM on `node_modules`: stop Node processes, rename `node_modules`, and reinstall.
+- Next.js root warning: `next.config.ts` sets `turbopack.root` to project root.
